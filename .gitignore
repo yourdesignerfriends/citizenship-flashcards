@@ -1,0 +1,14 @@
+# I exclude the node_modules directory because I manage dependencies locally via npm and packages do not need to be tracked in version control.
+node_modules/
+
+# I ignore build and distribution folders so that compiled files generated during local development stay out of my GitHub repository.
+dist/
+build/
+
+# I exclude macOS system files to keep my workspace clean of hidden metadata.
+.DS_Store
+Thumbs.db
+
+# I ignore local environment files and log outputs to protect my private settings and prevent clutter.
+.env
+*.log
