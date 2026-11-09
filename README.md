@@ -1,10 +1,8 @@
 # Overview
 
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
+{Citizenship Flashcards is a TypeScript console application for studying questions from the United States Citizenship Test. Users can study all available questions or choose a category, reveal answers, skip to the next flashcard, return to the main menu, or exit. The questions are loaded asynchronously from a JSON file, and the application is organized into separate layers for the console view, controller, quiz service, and data repository.}
 
-{Provide a description of the software that you wrote to demonstrate the TypeScript language.}
-
-{Describe your purpose for writing this software.}
+{I created Citizenship Flashcards to help people study for the United States Citizenship Test in a simple and organized way. The application presents questions and answers as sequential flashcards, allowing users to reveal answers, skip questions, and choose a category to study. I also built this project to practice TypeScript and learn how to organize an application using classes and a layered architecture.}
 
 {Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running and a walkthrough of the code. Focus should be on sharing what you learned about the language syntax.}
 
@@ -12,9 +10,9 @@
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+{I developed this application using Visual Studio Code, and used Git and GitHub to manage and store the project.}
 
-{Describe the programming language that you used and any libraries.}
+{I wrote this application in TypeScript, a programming language built on JavaScript that adds static types. It runs on Node.js and uses Node’s built-in libraries for file access and terminal input. I also used JSON to store the flashcard questions. No additional programming languages or runtime libraries were needed.}
 
 # Useful Websites
 
@@ -27,6 +25,6 @@
 
 {Make a list of things that you need to fix, improve, and add in the future.}
 
-- Item 1
-- Item 2
-- Item 3
+- Expand the questions.json file with more USCIS citizenship test questions.
+- Add a feature to track and save user study score between sessions.
+- Build a website version of the flashcard application so users can study in a web browser
