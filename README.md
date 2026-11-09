@@ -14,8 +14,8 @@ I wrote this application in TypeScript, a programming language built on JavaScri
 
 # Useful Websites
 
-- [Web Site Name](http://url.link.goes.here)
-- [Web Site Name](http://url.link.goes.here)
+- [Typescript Lang](https://www.typescriptlang.org/)
+- [Next js](https://nextjs.org/docs/app/api-reference/config/typescript)
 
 # Future Work
 
