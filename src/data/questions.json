@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "category": "American Government",
+        "question": "What is the form of government of the United States?",
+        "answer": "Republic"
+    },
+    {
+        "id": 2,
+        "category": "American Government",
+        "question": "What is the supreme law of the land?",
+        "answer": "The Constitution"
+    },
+    {
+        "id": 12,
+        "category": "American Government",
+        "question": "What is the economic system of the United States?",
+        "answer": "Capitalism"
+    },
+    {
+        "id": 74,
+        "category": "American History",
+        "question": "Who lived in America before the Europeans arrived?",
+        "answer": "Native Americans"
+    },
+    {
+        "id": 119,
+        "category": "Symbols and Holidays",
+        "question": "What is the capital of the United States?",
+        "answer": "Washington, D.C."
+    }
+]
