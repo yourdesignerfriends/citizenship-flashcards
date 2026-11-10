@@ -1,7 +1,7 @@
 /*
-I define the shape of one flashcard here so the repository, service, and
-controller can work with the same type safe data. The application stores
-flashcards in Question[] lists, which fulfills the list requirement.
+I define the structure of one flashcard so every application layer uses
+the same type-safe fields. A Question represents one item; Question[] is
+the list type used to store and pass multiple flashcards through the app.
 */
 export interface Question {
     id: number;

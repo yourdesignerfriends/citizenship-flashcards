@@ -1,8 +1,8 @@
 /*
-I load the flashcard list from questions.json and validate each record
-before returning it. This class demonstrates classes and asynchronous
-file access. I throw an error when loading or validating fails so the
-application can report the problem instead of silently continuing.
+I use this repository class as the data-access layer for the flashcards.
+I asynchronously read questions.json, parse its contents, and validate
+each item before returning a Question[] list. If reading, parsing, or
+validation fails, I throw an error so the application can report the cause.
 */
 
 import { readFile } from "node:fs/promises";
@@ -10,6 +10,11 @@ import { readFile } from "node:fs/promises";
 import type { Question } from "../types/Question.js";
 import type { IQuestionRepository } from "./IQuestionRepository.js";
 
+/*
+I validate one unknown value from the JSON file before treating it as a
+Question. Checking every required field protects the rest of the app from
+malformed data and acts as a type guard for the validated value.
+*/
 function isQuestion(value: unknown): value is Question {
     if (typeof value !== "object" || value === null) {
         return false;
@@ -25,6 +30,12 @@ function isQuestion(value: unknown): value is Question {
 }
 
 export class JsonQuestionRepository implements IQuestionRepository {
+    /*
+    Here I read the JSON file asynchronously so file access does not block the
+    application. I parse the data as unknown, verify that it is an array of
+    valid questions, and return the typed list. My catch block wraps failures
+    with a helpful message while preserving the original error as the cause.
+    */
     async getQuestions(): Promise<Question[]> {
         try {
             const data = await readFile(
@@ -35,8 +46,14 @@ export class JsonQuestionRepository implements IQuestionRepository {
 
             if (
                 !Array.isArray(questions) ||
-                !questions.every(isQuestion)
-            ) {
+                !questions.every(
+                    /*
+                    I check each array entry with my type guard, every item
+                    must pass for me to accept and return the whole list.
+                    */
+                    isQuestion,
+                )
+            )   {
                 throw new Error("The questions file has an invalid format.");
             }
 

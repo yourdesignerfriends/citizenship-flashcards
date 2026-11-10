@@ -1,9 +1,3 @@
-/*
-I coordinate user choices and the quiz service in this controller class.
-I study questions sequentially using a Question[] list. The recursive
-studyQuestions method advances to the next card, demonstrating recursion;
-async/await lets me wait for console input and question data.
-*/
 import type { QuizService } from "../services/QuizService.js";
 import type { Question } from "../types/Question.js";
 import type { ConsoleView } from "../views/ConsoleView.js";
@@ -15,11 +9,22 @@ const CATEGORIES = [
 ] as const;
 
 export class QuizController {
+    /*
+    Here I receive the service and view that this controller coordinates.
+    Keeping these dependencies as constructor properties lets my methods
+    load questions through the service and display prompts through the view.
+    */
     constructor(
         private readonly quizService: QuizService,
         private readonly view: ConsoleView,
     ) {}
 
+    /*
+    I run the application's main menu in a loop so the user can start more
+    than one study session or exit. I await menu input and question loading,
+    validate the selected option, then pass the appropriate Question[] list
+    to the flashcard flow.
+    */
     async run(): Promise<void> {
         this.view.showWelcome();
 
@@ -72,6 +77,13 @@ export class QuizController {
         }
     }
 
+    /*
+    I display and process the flashcard at the current index in the
+    Question[] list. The base case stops when the index reaches the list's
+    length. When the user chooses N, I call this method again with index + 1;
+    that self call is the recursion that advances to the next card. I return
+    true only when the user chooses to exit, so the caller can end the app.
+    */
     private async studyQuestions(
         questions: Question[],
         category: string,

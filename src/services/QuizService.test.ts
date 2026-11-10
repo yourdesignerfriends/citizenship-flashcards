@@ -1,6 +1,7 @@
 /*
-I verify that the service returns flashcards in order and filters the
-Question[] list by category without changing that order.
+I test the service layer independently from the JSON file by supplying
+an in memory repository. These tests check that it returns a Question[]
+list in order and filters that list by category without reordering it.
 */
 import assert from "node:assert/strict";
 import test from "node:test";
@@ -29,24 +30,48 @@ const questions = [
 ];
 
 class InMemoryQuestionRepository implements IQuestionRepository {
+    /*
+    I implement the repository contract with sample data so each test can
+    exercise the service without reading from the real JSON file.
+    */
     async getQuestions() {
         return questions;
     }
 }
 
-test("getAllQuestions preserves the repository order", async () => {
+/*
+I verify that requesting all questions returns the same sample list in the
+same order, showing the service does not unnecessarily reorder its data.
+*/
+const testGetAllQuestions = async () => {
     const service = new QuizService(new InMemoryQuestionRepository());
 
     assert.deepEqual(await service.getAllQuestions(), questions);
-});
+};
 
-test("getQuestionsByCategory filters without changing question order", async () => {
+/*
+I verify that selecting a category returns only matching cards and preserves
+their relative order in the original Question[] list.
+*/
+const testGetQuestionsByCategory = async () => {
     const service = new QuizService(new InMemoryQuestionRepository());
 
     const result = await service.getQuestionsByCategory("American Government");
 
     assert.deepEqual(
-        result.map((question) => question.id),
+        result.map(
+            /*
+            I map the filtered Question[] list to IDs so the assertion can
+            clearly verify which cards were returned and in what order.
+            */
+            (question) => question.id,
+        ),
         [1, 3],
     );
-});
+};
+
+test("getAllQuestions preserves the repository order", testGetAllQuestions);
+test(
+    "getQuestionsByCategory filters without changing question order",
+    testGetQuestionsByCategory,
+);
