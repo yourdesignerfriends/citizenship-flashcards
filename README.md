@@ -4,7 +4,7 @@ Citizenship Flashcards is a TypeScript console application for studying question
 
 I created Citizenship Flashcards to help people study for the United States Citizenship Test in a simple and organized way. The application presents questions and answers as sequential flashcards, allowing users to reveal answers, skip questions, and choose a category to study. I also built this project to practice TypeScript and learn how to organize an application using classes and a layered architecture.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=qri3icSd9x4)
 
 # Development Environment
 
